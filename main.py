@@ -9,8 +9,8 @@ awsAccessKey = '<ACCESS KEY>'
 awsSecretAccessKey = '<SECRET KEY>'
 s3BucketName = '<BUCKET NAME>'
 
-# Create Session for access AWS S3 with access key anf secret key
-session = boto3.Session(aws_access_key_id=awsAccessKey, aws_secret_access_key=awsSecretAccessKey)
+# Create Session for accessing AWS S3 with access key and secret key
+session = boto3.Session(aws_access_key_id = awsAccessKey, aws_secret_access_key = awsSecretAccessKey)
 s3 = session.resource('s3')
 
 # Create session for mysql connector
@@ -33,7 +33,7 @@ try:
         newFileName = "<New File Name>" # new Name
         try:
             # rename name from oldFileName to newFileName
-            s3.Object(s3BucketName, str(newFileName)).copy_from(CopySource=s3BucketName+str(oldFileName))
+            s3.Object(s3BucketName, str(newFileName)).copy_from(CopySource = s3BucketName + str(oldFileName))
         except:
             pass
         print(oldFileName)
@@ -42,9 +42,10 @@ try:
 
 except Error as e:
     print("Error reading data from MySQL table", e)
-    
+
 finally:
     if (connection.is_connected()):
         connection.close()
         cursor.close()
         print("MySQL connection is closed")
+        
