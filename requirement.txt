@@ -1,0 +1,2 @@
+mysql.connector==2.2.9
+boto3==1.9.*
